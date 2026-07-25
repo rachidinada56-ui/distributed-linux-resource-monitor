@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resource Monitor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🖥️ Linux Resource Monitor</h1>
+    <div class="header-right">
+      <select id="hostSelect"></select>
+      <span id="statusDot" class="status-dot"></span>
+      <span id="statusText">connecting…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="cards">
+      <div class="card">
+        <h3>CPU</h3>
+        <div class="metric-value" id="cpuValue">--%</div>
+        <div class="bar"><div class="bar-fill" id="cpuBar"></div></div>
+      </div>
+      <div class="card">
+        <h3>Memory</h3>
+        <div class="metric-value" id="memValue">--%</div>
+        <div class="bar"><div class="bar-fill" id="memBar"></div></div>
+        <div class="metric-sub" id="memSub"></div>
+      </div>
+      <div class="card">
+        <h3>Disk (/)</h3>
+        <div class="metric-value" id="diskValue">--%</div>
+        <div class="bar"><div class="bar-fill" id="diskBar"></div></div>
+        <div class="metric-sub" id="diskSub"></div>
+      </div>
+      <div class="card">
+        <h3>Processes</h3>
+        <div class="metric-value" id="procValue">--</div>
+        <div class="metric-sub">running</div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-box">
+        <h3>CPU % over time</h3>
+        <canvas id="cpuChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Memory (MB) over time</h3>
+        <canvas id="memChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Network throughput (KB/s)</h3>
+        <canvas id="netChart"></canvas>
+      </div>
+    </section>
+
+    <section class="processes">
+      <h3>Top processes (by CPU)</h3>
+      <table>
+        <thead>
+          <tr><th>PID</th><th>Name</th><th>CPU %</th><th>Mem (MB)</th></tr>
+        </thead>
+        <tbody id="procTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    Agents → TCP socket → Monitoring Server (producer/consumer queue) → SQLite → REST API → this dashboard.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
