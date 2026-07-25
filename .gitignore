@@ -1,0 +1,22 @@
+# Compiled binaries
+monitor_server
+monitor_agent
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Object files
+*.o
+
+# Build directories
+build/
+
+# Logs
+*.log
+
+# Editor files
+.vscode/
+*.swp
+*~
